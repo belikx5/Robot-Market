@@ -6,7 +6,7 @@ function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
-function AlertMessage({ error, alertOpen, setAlertOpen }) {
+function AlertMessage({ error, alertOpen, setAlertOpen, autoHideTime = 6000 }) {
     const handleClose = (event, reason) => {
         if (reason === "clickaway") {
           return;
@@ -14,7 +14,7 @@ function AlertMessage({ error, alertOpen, setAlertOpen }) {
         setAlertOpen(false);
       };
       return (
-        <Snackbar open={alertOpen} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar open={alertOpen} autoHideDuration={autoHideTime} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error">
             {error}
           </Alert>
